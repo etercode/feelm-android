@@ -61,6 +61,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
 import org.feelm.app.data.api.CastMember
+import org.feelm.app.data.api.Progress
 import org.feelm.app.data.api.ShelfStatus
 import org.feelm.app.data.api.WorkDetail
 import org.feelm.app.ui.buildMeta
@@ -178,6 +179,11 @@ fun DetailScreen(
         }
     }
 }
+
+/** Reads one number out of the entry's per-type progress object. */
+private fun progressOf(entry: org.feelm.app.data.api.Entry?, key: String): Int? =
+    (entry?.progress as? kotlinx.serialization.json.JsonObject)
+        ?.get(key)?.toString()?.trim('"')?.toIntOrNull()
 
 @Composable
 private fun WorkBody(
@@ -397,11 +403,16 @@ private fun WorkBody(
             item("seasons") {
                 SeasonBrowser(
                     seasons = work.details.seasons,
-                    watchedSeason = (state.entry?.progress as? kotlinx.serialization.json.JsonObject)
-                        ?.get("season")?.let { it.toString().trim('"').toIntOrNull() },
-                    watchedEpisode = (state.entry?.progress as? kotlinx.serialization.json.JsonObject)
-                        ?.get("episode")?.let { it.toString().trim('"').toIntOrNull() },
-                    modifier = Modifier.padding(horizontal = 16.dp),
+                    accent = accent,
+                    watchedSeason = progressOf(state.entry, "season"),
+                    watchedEpisode = progressOf(state.entry, "episode"),
+                    // Ticking an episode is the same write the number fields
+                    // make, so the two controls cannot disagree.
+                    onMarkWatched = if (signedIn) { season, episode ->
+                        onProgress(Progress.Series(season, episode))
+                    } else {
+                        null
+                    },
                 )
             }
         }
