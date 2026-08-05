@@ -47,6 +47,7 @@ import org.feelm.app.ui.home.HomeScreen
 import org.feelm.app.ui.person.PersonScreen
 import org.feelm.app.ui.profile.FollowListScreen
 import org.feelm.app.ui.profile.ProfileScreen
+import org.feelm.app.ui.profile.UserShelfScreen
 import org.feelm.app.ui.settings.SettingsScreen
 import org.feelm.app.ui.search.SearchScreen
 import org.feelm.app.ui.shelf.ShelfScreen
@@ -62,6 +63,7 @@ object Routes {
     const val PERSON = "person/{slug}"
     const val USER = "user/{username}"
     const val FOLLOWS = "follows/{username}/{following}"
+    const val USER_SHELF = "usershelf/{username}/{rail}"
     const val FEED = "feed"
     const val SETTINGS = "settings"
 
@@ -69,6 +71,7 @@ object Routes {
     fun person(slug: String) = "person/$slug"
     fun user(username: String) = "user/$username"
     fun follows(username: String, following: Boolean) = "follows/$username/$following"
+    fun userShelf(username: String, rail: String) = "usershelf/$username/$rail"
 }
 
 private data class Tab(val route: String, @StringRes val label: Int, val icon: ImageVector)
@@ -214,6 +217,29 @@ fun FeelmApp(container: AppContainer) {
                         },
                         onOpenFollows = { name, following ->
                             navController.navigate(Routes.follows(name, following))
+                        },
+                        onOpenShelf = { name, rail ->
+                            navController.navigate(Routes.userShelf(name, rail))
+                        },
+                    )
+                }
+
+                composable(
+                    route = Routes.USER_SHELF,
+                    arguments = listOf(
+                        navArgument("username") { type = NavType.StringType },
+                        navArgument("rail") { type = NavType.StringType },
+                    ),
+                ) { entry ->
+                    val name = entry.arguments?.getString("username").orEmpty()
+                    val rail = entry.arguments?.getString("rail").orEmpty()
+                    UserShelfScreen(
+                        username = name,
+                        railKey = rail,
+                        title = "@$name",
+                        onBack = { navController.popBackStack() },
+                        onOpenWork = { type, slug ->
+                            navController.navigate(Routes.work(type, slug))
                         },
                     )
                 }

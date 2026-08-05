@@ -17,17 +17,25 @@ data class ProfileUiState(
     val loading: Boolean = true,
     val profile: ProfileResponse? = null,
     /** Their shelves, in the order a profile reads them. */
-    val rails: List<Pair<String, ProfileRail>> = emptyList(),
+    val rails: List<Pair<RailSpec, ProfileRail>> = emptyList(),
     val error: String? = null,
 )
 
-/** The order the web app shows them in, and the headings for each. */
+/**
+ * The order the web app shows them in, with the shelf query each one stands
+ * for — which is what its "see all" has to reproduce.
+ *
+ * Titles come from the dictionary (`profile.rail.*`), so they read the same
+ * as on the site: "Watching now", "Rated highest", "Recently finished".
+ */
+data class RailSpec(val key: String, val status: String, val sort: String?)
+
 val PROFILE_RAILS = listOf(
-    "watching" to "Watching",
-    "loved" to "Loved",
-    "finished" to "Finished",
-    "wishlist" to "Wishlist",
-    "dropped" to "Dropped",
+    RailSpec("watching", "active", null),
+    RailSpec("loved", "done", "rating"),
+    RailSpec("finished", "done", null),
+    RailSpec("wishlist", "wishlist", null),
+    RailSpec("dropped", "dropped", null),
 )
 
 class ProfileViewModel(
@@ -52,10 +60,10 @@ class ProfileViewModel(
                     // rather than holding the whole page for five shelves.
                     val overview = runCatching { repository.overview(username) }.getOrNull()
                     _state.value = _state.value.copy(
-                        rails = PROFILE_RAILS.mapNotNull { (key, label) ->
-                            overview?.rails?.get(key)
+                        rails = PROFILE_RAILS.mapNotNull { spec ->
+                            overview?.rails?.get(spec.key)
                                 ?.takeIf { it.items.isNotEmpty() }
-                                ?.let { label to it }
+                                ?.let { spec to it }
                         },
                     )
                 }

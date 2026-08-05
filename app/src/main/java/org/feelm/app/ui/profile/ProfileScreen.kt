@@ -32,6 +32,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.material3.TextButton
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.foundation.layout.aspectRatio
@@ -56,6 +59,7 @@ fun ProfileScreen(
     onBack: () -> Unit,
     onOpenWork: (type: String, slug: String) -> Unit,
     onOpenFollows: (username: String, following: Boolean) -> Unit,
+    onOpenShelf: (username: String, railKey: String) -> Unit,
     viewModel: ProfileViewModel = viewModel(
         key = username,
         factory = ProfileViewModel.factory(username),
@@ -208,26 +212,47 @@ fun ProfileScreen(
                         }
                     }
 
-                    items(state.rails, key = { it.first }) { (label, rail) ->
+                    items(state.rails, key = { it.first.key }) { (spec, rail) ->
                         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                             Row(
-                                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                                modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
                                 verticalAlignment = Alignment.CenterVertically,
                             ) {
-                                Text(
-                                    text = label,
-                                    style = MaterialTheme.typography.titleMedium,
-                                    fontWeight = FontWeight.Bold,
-                                    color = MaterialTheme.colorScheme.onBackground,
-                                    modifier = Modifier.weight(1f),
-                                )
-                                // The shelf's real size, not the rail's — it is
-                                // what a "see all" would be offering.
-                                Text(
-                                    text = rail.total.toString(),
-                                    style = MaterialTheme.typography.labelLarge,
-                                    color = feelm.faint,
-                                )
+                                Column(modifier = Modifier.weight(1f)) {
+                                    // The count reads as a kicker above the
+                                    // heading, as it does on the web — it is
+                                    // context for the shelf, not a label of
+                                    // its own.
+                                    Text(
+                                        text = pluralStringResource(
+                                            R.plurals.count_title,
+                                            rail.total,
+                                            rail.total,
+                                        ),
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = feelm.faint,
+                                    )
+                                    Text(
+                                        text = railTitle(spec.key),
+                                        style = MaterialTheme.typography.titleMedium,
+                                        fontWeight = FontWeight.Bold,
+                                        color = MaterialTheme.colorScheme.onBackground,
+                                    )
+                                }
+                                // Only when the shelf holds more than the rail
+                                // shows — otherwise it offers nothing.
+                                if (rail.total > rail.items.size) {
+                                    TextButton(
+                                        onClick = { onOpenShelf(username, spec.key) },
+                                    ) {
+                                        Text(stringResource(R.string.common_seeAll))
+                                        Icon(
+                                            Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                                            contentDescription = null,
+                                            modifier = Modifier.size(18.dp),
+                                        )
+                                    }
+                                }
                             }
                             LazyRow(
                                 contentPadding = PaddingValues(horizontal = 16.dp),
@@ -284,6 +309,16 @@ fun ProfileScreen(
             }
         }
     }
+}
+
+/** Rail headings come from the dictionary, so they read as they do on the web. */
+@Composable
+private fun railTitle(key: String): String {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val id = context.resources.getIdentifier(
+        "profile_rail_$key", "string", context.packageName,
+    )
+    return if (id == 0) key.replaceFirstChar { it.uppercase() } else context.getString(id)
 }
 
 @Composable

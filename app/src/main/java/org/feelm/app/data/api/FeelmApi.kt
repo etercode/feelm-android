@@ -120,6 +120,16 @@ interface FeelmApi {
     @GET("api/users/{username}/overview")
     suspend fun overview(@Path("username") username: String): ProfileOverview
 
+    /** The "see all" behind each profile rail. */
+    @GET("api/users/{username}/entries")
+    suspend fun userEntries(
+        @Path("username") username: String,
+        @Query("status") status: String? = null,
+        @Query("sort") sort: String? = null,
+        @Query("page") page: Int = 1,
+        @Query("limit") limit: Int = 24,
+    ): UserShelfResponse
+
     @GET("api/users/{username}/followers")
     suspend fun followers(@Path("username") username: String): FollowListResponse
 

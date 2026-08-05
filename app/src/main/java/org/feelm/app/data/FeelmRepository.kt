@@ -16,6 +16,7 @@ import org.feelm.app.data.api.ChooseHandleRequest
 import org.feelm.app.data.api.EntriesResponse
 import org.feelm.app.data.api.FeedResponse
 import org.feelm.app.data.api.ProfileOverview
+import org.feelm.app.data.api.UserShelfResponse
 import org.feelm.app.data.api.ProfileResponse
 import org.feelm.app.data.api.UpdatePreferencesRequest
 import org.feelm.app.data.api.UpdateProfileRequest
@@ -131,6 +132,13 @@ class FeelmRepository(
         )
 
     suspend fun overview(username: String): ProfileOverview = api.overview(username)
+
+    suspend fun userShelf(
+        username: String,
+        status: String?,
+        sort: String? = null,
+        page: Int = 1,
+    ): UserShelfResponse = api.userEntries(username, status, sort, page)
 
     suspend fun followers(username: String): List<User> = api.followers(username).users
 

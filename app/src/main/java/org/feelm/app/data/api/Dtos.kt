@@ -475,6 +475,15 @@ data class ProfileRail(
  * trimmed to poster-card fields. The server assembles them in one pass because
  * five separate calls is what the page used to cost.
  */
+/** A page of somebody's shelf, filtered by status. */
+@Serializable
+data class UserShelfResponse(
+    val items: List<CurrentEntry> = emptyList(),
+    val total: Int = 0,
+    val page: Int = 1,
+    val pages: Int = 1,
+)
+
 @Serializable
 data class ProfileOverview(
     val rails: Map<String, ProfileRail> = emptyMap(),
