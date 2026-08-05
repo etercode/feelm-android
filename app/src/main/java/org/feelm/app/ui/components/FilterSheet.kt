@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.FlowRowScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -93,7 +94,7 @@ fun FilterSheet(
     ) {
         if (showTypes) {
             Section(stringResource(R.string.search_type))
-            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            PillFlow {
                 Pill(stringResource(R.string.profile_everything), draft.type == null) { draft = draft.copy(type = null) }
                 FILTER_TYPES.forEach { type ->
                     Pill(typeLabelFor(type), draft.type == type) { draft = draft.copy(type = type) }
@@ -102,7 +103,7 @@ fun FilterSheet(
         }
 
         Section(stringResource(R.string.search_sort))
-        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        PillFlow {
             (filters?.sorts ?: listOf("popularity", "score")).forEach { sort ->
                 Pill(
                     label = sortLabel(sort),
@@ -112,7 +113,7 @@ fun FilterSheet(
         }
 
         Section(stringResource(R.string.search_release))
-        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        PillFlow {
             listOf(
                 null to stringResource(R.string.app_any),
                 "released" to stringResource(R.string.search_releaseOut),
@@ -125,10 +126,7 @@ fun FilterSheet(
 
         filters?.genres?.takeIf { it.isNotEmpty() }?.let { genres ->
             Section(stringResource(R.string.browse_genre))
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
+            PillFlow {
                 genres.forEach { genre ->
                     val on = genre.slug in draft.genres
                     Pill(genre.name, on) {
@@ -142,7 +140,7 @@ fun FilterSheet(
         }
 
         Section(stringResource(R.string.browse_minScore))
-        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        PillFlow {
             listOf(null, 60, 70, 80, 90).forEach { score ->
                 Pill(score?.let { "$it+" } ?: stringResource(R.string.app_any), draft.scoreMin == score) {
                     draft = draft.copy(scoreMin = score)
@@ -152,10 +150,7 @@ fun FilterSheet(
 
         filters?.decades?.takeIf { it.isNotEmpty() }?.let { decades ->
             Section(stringResource(R.string.browse_decade))
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
+            PillFlow {
                 Pill(stringResource(R.string.app_any), draft.yearFrom == null) {
                     draft = draft.copy(yearFrom = null, yearTo = null)
                 }
@@ -169,10 +164,7 @@ fun FilterSheet(
 
         filters?.certifications?.takeIf { it.isNotEmpty() }?.let { certifications ->
             Section(stringResource(R.string.app_certification))
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
+            PillFlow {
                 certifications.forEach { cert ->
                     val on = cert in draft.certifications
                     Pill(cert, on) {
@@ -187,10 +179,7 @@ fun FilterSheet(
 
         filters?.languages?.takeIf { it.isNotEmpty() }?.let { languages ->
             Section(stringResource(R.string.settings_language))
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
+            PillFlow {
                 // Already ordered by how much of the catalog each one holds,
                 // so the twelve worth offering are the first twelve.
                 languages.take(12).forEach { language ->
@@ -212,6 +201,24 @@ fun FilterSheet(
             }
         }
     }
+}
+
+/**
+ * A wrapping row of pills, spaced the same in both directions.
+ *
+ * Written as one composable because it was not: half the sections set only
+ * `horizontalArrangement`, so whenever their pills wrapped — Sort at eight
+ * options, Type at five — the rows sat flush against each other while Genre
+ * next to them looked right. A shared wrapper is the difference between a
+ * rule and a habit.
+ */
+@Composable
+private fun PillFlow(content: @Composable FlowRowScope.() -> Unit) {
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        content = content,
+    )
 }
 
 @Composable
