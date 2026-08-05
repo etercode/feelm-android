@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Russian for the phone-only wording. See values/strings_app.xml. -->
+<resources>
+    <string name="app_tryAgain">Повторить</string>
+    <string name="app_yourProfile">Ваш публичный профиль</string>
+    <string name="app_tagline">Отмечайте, что смотрите, во что играете и что читаете.</string>
+    <string name="app_continueGoogle">Продолжить с Google</string>
+    <string name="app_handleHint">Буквы, цифры и подчёркивания.</string>
+    <string name="app_continue">Продолжить</string>
+    <string name="app_clearAll">Сбросить всё</string>
+    <string name="app_showResults">Показать результаты</string>
+    <string name="app_openYoutube">Открыть в YouTube</string>
+    <string name="app_trailer">Трейлер</string>
+    <string name="app_signInTrack">Войдите, чтобы отслеживать</string>
+    <string name="app_collection">Коллекция</string>
+    <string name="app_signInReview">Войдите, чтобы оставить отзыв</string>
+    <string name="app_noReviews">Отзывов пока нет.</string>
+    <string name="app_reviewPlaceholder">Что вы думаете?</string>
+    <string name="app_feedEmpty">Здесь пока пусто. Подпишитесь на кого-нибудь.</string>
+    <string name="app_cropHint">Перетаскивайте, чтобы сдвинуть, сводите пальцы для масштаба.</string>
+    <string name="app_useThis">Использовать</string>
+    <string name="app_choosePicture">Выбрать фото</string>
+    <string name="app_yourShelf">Ваша полка</string>
+    <string name="app_signInShelf">Войдите, чтобы вести полку того, что смотрите, во что играете и что читаете.</string>
+    <string name="app_postReview">Опубликовать отзыв</string>
+    <string name="app_saveChanges">Сохранить изменения</string>
+    <string name="app_needRating">Поставьте оценку</string>
+    <string name="app_needBody">Напишите что-нибудь</string>
+    <string name="app_writeReview">Написать отзыв</string>
+    <string name="app_searchPrompt">Поиск по каталогу.</string>
+    <string name="app_comingSoon">Скоро</string>
+    <string name="app_currently">Сейчас</string>
+    <string name="app_recentReviews">Последние отзывы</string>
+    <string name="app_progressSaved">Прогресс сохранён.</string>
+    <string name="app_reviewSaved">Отзыв сохранён.</string>
+
+    <string name="app_region">Регион</string>
+    <string name="app_tagline_field">Девиз</string>
+    <string name="app_bio">О себе</string>
+
+    <string name="app_certification">Возрастной рейтинг</string>
+    <string name="app_any">Любой</string>
+    <string name="app_upcoming">Скоро выйдет</string>
+
+    <string name="app_wishlist">Хочу</string>
+    <string name="app_watching">Смотрю</string>
+    <string name="app_done">Завершено</string>
+    <string name="app_dropped">Брошено</string>
+
+    <string name="app_navHome">Главная</string>
+    <string name="app_navBrowse">Каталог</string>
+    <string name="app_navSearch">Поиск</string>
+    <string name="app_navShelf">Полка</string>
+    <string name="app_navYou">Вы</string>
+
+    <string name="review_deleteTitle">Удалить ваш отзыв?</string>
+    <string name="review_deleteBody">Ваша оценка и текст будут удалены. Это нельзя отменить.</string>
+
+    <!-- Added with the second sweep: labels the swap scripts could not see. -->
+    <string name="app_yourRating">Ваша оценка</string>
+    <string name="app_collapse">Свернуть</string>
+    <string name="app_expand">Развернуть</string>
+    <string name="app_useLight">Светлая тема</string>
+    <string name="app_useDark">Тёмная тема</string>
+    <string name="app_outToday">Выходит сегодня</string>
+    <string name="app_tomorrow">Завтра</string>
+    <string name="app_pickUsername">Выберите имя пользователя</string>
+    <string name="app_haveAccount">Уже есть аккаунт? Войти</string>
+    <string name="app_newHere">Впервые на Feelm? Создать аккаунт</string>
+    <string name="app_verbWants">хочет</string>
+    <string name="app_verbOn">в процессе</string>
+    <string name="app_verbFinished">завершил</string>
+    <string name="app_verbDropped">бросил</string>
+    <string name="app_verbUpdated">обновил</string>
+    <string name="app_noFollowers">Пока нет подписчиков.</string>
+    <string name="app_noFollowing">Пока ни на кого не подписан.</string>
+</resources>

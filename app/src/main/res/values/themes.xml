@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      AppCompat, not android:Theme.Material, because MainActivity is an
+      AppCompatActivity — and it is one only so that per-app language works.
+      AppCompatDelegate reaches the system through the activities AppCompat
+      tracks; under a plain ComponentActivity nothing is registered and
+      setApplicationLocales silently does nothing at all.
+
+      Compose draws every pixel above this, so the theme itself only supplies
+      the window background and the system-bar defaults.
+    -->
+    <style name="Theme.Feelm" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+</resources>

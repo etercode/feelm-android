@@ -1,0 +1,30 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+# Every module's build output, not just the root project's — the scaffold
+# ships `/build` alone, which leaves app/build (115 MB of APKs and generated
+# sources) tracked.
+build/
+/captures
+.kotlin/
+.externalNativeBuild
+.cxx
+local.properties
+# Machine-specific: hardcodes this box's JAVA_HOME so builds can be driven
+# from WSL. Nothing in it is portable.
+/gw.bat
+
+# Downloaded from the Google Cloud console when the Android OAuth client was
+# created. Neither is read by the build — the app sends the *web* client id,
+# which lives in app/build.gradle.kts as a buildConfigField. The JSON holds no
+# client_secret (an Android client is a public client), but a file with that
+# name in a repository is a secret-scanner alert waiting to happen.
+client_secret_*.json
+clientid.txt

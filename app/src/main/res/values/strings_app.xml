@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Wording that exists only on the phone.
+
+  Everything in strings_feelm.xml comes from feelm-sk's dictionaries. These are
+  strings the web app has no equivalent for — a cropper hint, a bottom-bar
+  label — so they are written here and translated alongside in values-az,
+  values-tr and values-ru.
+
+  If any of these later earn a place on the web too, add the key to
+  lib/i18n/messages/en.js instead and delete it from here, so the two clients
+  keep saying the same thing in the same words.
+-->
+<resources>
+    <string name="app_tryAgain">Try again</string>
+    <string name="app_yourProfile">Your public profile</string>
+    <string name="app_tagline">Track what you watch, play and read.</string>
+    <string name="app_continueGoogle">Continue with Google</string>
+    <string name="app_handleHint">Letters, numbers and underscores.</string>
+    <string name="app_continue">Continue</string>
+    <string name="app_clearAll">Clear all</string>
+    <string name="app_showResults">Show results</string>
+    <string name="app_openYoutube">Open in YouTube</string>
+    <string name="app_trailer">Trailer</string>
+    <string name="app_signInTrack">Sign in to track this</string>
+    <string name="app_collection">The collection</string>
+    <string name="app_signInReview">Sign in to review this</string>
+    <string name="app_noReviews">No reviews yet.</string>
+    <string name="app_reviewPlaceholder">What did you think?</string>
+    <string name="app_feedEmpty">Nothing here yet. Follow a few people.</string>
+    <string name="app_cropHint">Drag to move, pinch to zoom.</string>
+    <string name="app_useThis">Use this</string>
+    <string name="app_choosePicture">Choose a picture</string>
+    <string name="app_yourShelf">Your shelf</string>
+    <string name="app_signInShelf">Sign in to keep a shelf of what you watch, play and read.</string>
+    <string name="app_postReview">Post review</string>
+    <string name="app_saveChanges">Save changes</string>
+    <string name="app_needRating">Give it a rating</string>
+    <string name="app_needBody">Write something</string>
+    <string name="app_writeReview">Write a review</string>
+    <string name="app_searchPrompt">Search the catalog.</string>
+    <string name="app_comingSoon">Coming soon</string>
+    <string name="app_currently">Currently</string>
+    <string name="app_recentReviews">Recent reviews</string>
+    <string name="app_progressSaved">Progress saved.</string>
+    <string name="app_reviewSaved">Review saved.</string>
+
+    <!-- Settings sections and fields the web dictionary has no key for. -->
+    <string name="app_region">Region</string>
+    <string name="app_tagline_field">Tagline</string>
+    <string name="app_bio">Bio</string>
+
+    <!-- Filter sheet. -->
+    <string name="app_certification">Certification</string>
+    <string name="app_any">Any</string>
+    <string name="app_upcoming">Upcoming</string>
+
+    <!-- Shelf tabs. The dictionary keys these per type; the app needs one set. -->
+    <string name="app_wishlist">Wishlist</string>
+    <string name="app_watching">Watching</string>
+    <string name="app_done">Done</string>
+    <string name="app_dropped">Dropped</string>
+
+    <!-- Bottom bar. Short by necessity: five labels share one row. -->
+    <string name="app_navHome">Home</string>
+    <string name="app_navBrowse">Browse</string>
+    <string name="app_navSearch">Search</string>
+    <string name="app_navShelf">Shelf</string>
+    <string name="app_navYou">You</string>
+
+    <!-- Deleting a review is the one destructive action here, so it asks. -->
+    <string name="review_deleteTitle">Delete your review?</string>
+    <string name="review_deleteBody">Your rating and what you wrote will be removed. This cannot be undone.</string>
+
+    <!-- Added with the second sweep: labels the swap scripts could not see. -->
+    <string name="app_yourRating">Your rating</string>
+    <string name="app_collapse">Collapse</string>
+    <string name="app_expand">Expand</string>
+    <string name="app_useLight">Use the light theme</string>
+    <string name="app_useDark">Use the dark theme</string>
+    <string name="app_outToday">Out today</string>
+    <string name="app_tomorrow">Tomorrow</string>
+    <string name="app_pickUsername">Pick a username</string>
+    <string name="app_haveAccount">Already have an account? Sign in</string>
+    <string name="app_newHere">New to Feelm? Create an account</string>
+    <string name="app_verbWants">wants</string>
+    <string name="app_verbOn">is on</string>
+    <string name="app_verbFinished">finished</string>
+    <string name="app_verbDropped">dropped</string>
+    <string name="app_verbUpdated">updated</string>
+    <string name="app_noFollowers">No followers yet.</string>
+    <string name="app_noFollowing">Not following anyone yet.</string>
+</resources>

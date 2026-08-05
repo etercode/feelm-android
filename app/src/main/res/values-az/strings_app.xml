@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Azerbaijani for the phone-only wording. See values/strings_app.xml. -->
+<resources>
+    <string name="app_tryAgain">Yenidən cəhd et</string>
+    <string name="app_yourProfile">Açıq profilin</string>
+    <string name="app_tagline">İzlədiklərini, oynadıqlarını və oxuduqlarını izlə.</string>
+    <string name="app_continueGoogle">Google ilə davam et</string>
+    <string name="app_handleHint">Hərf, rəqəm və alt xətt.</string>
+    <string name="app_continue">Davam et</string>
+    <string name="app_clearAll">Hamısını təmizlə</string>
+    <string name="app_showResults">Nəticələri göstər</string>
+    <string name="app_openYoutube">YouTube-da aç</string>
+    <string name="app_trailer">Treyler</string>
+    <string name="app_signInTrack">İzləmək üçün daxil ol</string>
+    <string name="app_collection">Seriya</string>
+    <string name="app_signInReview">Rəy yazmaq üçün daxil ol</string>
+    <string name="app_noReviews">Hələ rəy yoxdur.</string>
+    <string name="app_reviewPlaceholder">Nə düşünürsən?</string>
+    <string name="app_feedEmpty">Burada hələ heç nə yoxdur. Bir neçə nəfəri izlə.</string>
+    <string name="app_cropHint">Sürüşdürərək yerini dəyiş, barmaqlarınla yaxınlaşdır.</string>
+    <string name="app_useThis">Bunu istifadə et</string>
+    <string name="app_choosePicture">Şəkil seç</string>
+    <string name="app_yourShelf">Rəfin</string>
+    <string name="app_signInShelf">İzlədiklərini, oynadıqlarını və oxuduqlarını rəfdə saxlamaq üçün daxil ol.</string>
+    <string name="app_postReview">Rəyi paylaş</string>
+    <string name="app_saveChanges">Dəyişiklikləri saxla</string>
+    <string name="app_needRating">Qiymət ver</string>
+    <string name="app_needBody">Nəsə yaz</string>
+    <string name="app_writeReview">Rəy yaz</string>
+    <string name="app_searchPrompt">Kataloqda axtar.</string>
+    <string name="app_comingSoon">Tezliklə</string>
+    <string name="app_currently">Hazırda</string>
+    <string name="app_recentReviews">Son rəylər</string>
+    <string name="app_progressSaved">İrəliləyiş saxlanıldı.</string>
+    <string name="app_reviewSaved">Rəy saxlanıldı.</string>
+
+    <string name="app_region">Region</string>
+    <string name="app_tagline_field">Şüar</string>
+    <string name="app_bio">Haqqında</string>
+
+    <string name="app_certification">Yaş həddi</string>
+    <string name="app_any">Hamısı</string>
+    <string name="app_upcoming">Tezliklə</string>
+
+    <string name="app_wishlist">İstək siyahısı</string>
+    <string name="app_watching">İzlənilir</string>
+    <string name="app_done">Bitdi</string>
+    <string name="app_dropped">Yarımçıq</string>
+
+    <string name="app_navHome">Əsas</string>
+    <string name="app_navBrowse">Kəşf et</string>
+    <string name="app_navSearch">Axtar</string>
+    <string name="app_navShelf">Rəf</string>
+    <string name="app_navYou">Sən</string>
+
+    <string name="review_deleteTitle">Rəyin silinsin?</string>
+    <string name="review_deleteBody">Qiymətin və yazdıqların silinəcək. Bunu geri qaytarmaq olmaz.</string>
+
+    <!-- Added with the second sweep: labels the swap scripts could not see. -->
+    <string name="app_yourRating">Qiymətin</string>
+    <string name="app_collapse">Bağla</string>
+    <string name="app_expand">Aç</string>
+    <string name="app_useLight">İşıqlı temaya keç</string>
+    <string name="app_useDark">Qaranlıq temaya keç</string>
+    <string name="app_outToday">Bu gün çıxır</string>
+    <string name="app_tomorrow">Sabah</string>
+    <string name="app_pickUsername">İstifadəçi adı seç</string>
+    <string name="app_haveAccount">Hesabın var? Daxil ol</string>
+    <string name="app_newHere">Feelm-də yenisən? Hesab yarat</string>
+    <string name="app_verbWants">istəyir</string>
+    <string name="app_verbOn">davam edir</string>
+    <string name="app_verbFinished">bitirdi</string>
+    <string name="app_verbDropped">yarımçıq qoydu</string>
+    <string name="app_verbUpdated">yenilədi</string>
+    <string name="app_noFollowers">Hələ izləyən yoxdur.</string>
+    <string name="app_noFollowing">Hələ heç kimi izləmir.</string>
+</resources>
