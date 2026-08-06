@@ -15,9 +15,10 @@ build/
 .externalNativeBuild
 .cxx
 local.properties
-# Machine-specific: hardcodes this box's JAVA_HOME so builds can be driven
-# from WSL. Nothing in it is portable.
+# Machine-specific: hardcode this box's JAVA_HOME so builds and asset renders
+# can be driven from WSL. Nothing in them is portable.
 /gw.bat
+/tools/run.bat
 
 # Downloaded from the Google Cloud console when the Android OAuth client was
 # created. Neither is read by the build — the app sends the *web* client id,

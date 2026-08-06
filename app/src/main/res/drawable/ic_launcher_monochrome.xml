@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    The Spectrum F.
-
-    The spine breaks into four blocks, one hue per medium in the app's own
-    accent system: film blue, series purple, game green, book amber (the dark
-    theme's lifted values, since the tile is navy). The arms stay brand blue so
-    the letter reads first and the colour story second.
-
-    Nothing touches: blocks and arms sit on one grid with a 4-unit gutter,
-    because flush joints between a rounded block and a straight arm left
-    notches at the seams — and a mark built of gapped pills is the same
-    language as the app's filter and season pills anyway.
-
-    Geometry lives in a 100-unit box and is scaled by the group: 0.63 keeps the
-    mark's farthest corner 32.3dp from centre, inside the 33dp circle every
-    launcher mask is guaranteed to show.
--->
+<!-- Themed-icon layer: same geometry as the foreground in a single colour.
+     Android only reads the alpha and applies the wallpaper tint, so the four
+     hues would be wasted here — but the four-block spine still is the mark. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
@@ -27,22 +13,22 @@
         android:translateX="22.5"
         android:translateY="22.5">
         <path
-            android:fillColor="#649FF6"
+            android:fillColor="#FFFFFF"
             android:pathData="M25,10 h8 a7,7 0 0 1 7,7 v3 a7,7 0 0 1 -7,7 h-8 a7,7 0 0 1 -7,-7 v-3 a7,7 0 0 1 7,-7 z" />
         <path
-            android:fillColor="#BF7EE6"
+            android:fillColor="#FFFFFF"
             android:pathData="M25,31 h8 a7,7 0 0 1 7,7 v3 a7,7 0 0 1 -7,7 h-8 a7,7 0 0 1 -7,-7 v-3 a7,7 0 0 1 7,-7 z" />
         <path
-            android:fillColor="#33B78F"
+            android:fillColor="#FFFFFF"
             android:pathData="M25,52 h8 a7,7 0 0 1 7,7 v3 a7,7 0 0 1 -7,7 h-8 a7,7 0 0 1 -7,-7 v-3 a7,7 0 0 1 7,-7 z" />
         <path
-            android:fillColor="#D48D2C"
+            android:fillColor="#FFFFFF"
             android:pathData="M25,73 h8 a7,7 0 0 1 7,7 v3 a7,7 0 0 1 -7,7 h-8 a7,7 0 0 1 -7,-7 v-3 a7,7 0 0 1 7,-7 z" />
         <path
-            android:fillColor="#649FF6"
+            android:fillColor="#FFFFFF"
             android:pathData="M52.5,10 h20 a8.5,8.5 0 0 1 0,17 h-20 a8.5,8.5 0 0 1 0,-17 z" />
         <path
-            android:fillColor="#649FF6"
+            android:fillColor="#FFFFFF"
             android:pathData="M52.5,31 h9 a8.5,8.5 0 0 1 0,17 h-9 a8.5,8.5 0 0 1 0,-17 z" />
     </group>
 </vector>
