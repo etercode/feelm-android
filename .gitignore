@@ -1,12 +1,10 @@
 *.iml
 .gradle
 /local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+# All of it, not the handful the scaffold lists: gradle.xml and
+# deploymentTargetSelector.xml record this machine's JDK path and paired
+# devices, which is noise in every other checkout.
+/.idea/
 .DS_Store
 # Every module's build output, not just the root project's — the scaffold
 # ships `/build` alone, which leaves app/build (115 MB of APKs and generated
@@ -28,3 +26,9 @@ local.properties
 # name in a repository is a secret-scanner alert waiting to happen.
 client_secret_*.json
 clientid.txt
+
+# The upload key and its passwords. Play can reset a lost upload key, but a
+# leaked one lets somebody else publish over this app until it is reset.
+*.jks
+*.keystore
+keystore.properties

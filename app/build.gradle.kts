@@ -1,7 +1,22 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
+}
+
+/*
+ * Upload-key credentials, kept out of the repository.
+ *
+ * Play re-signs every install with its own app signing key; this one only
+ * proves an upload came from us. A checkout without keystore.properties still
+ * builds — the release type just comes out unsigned — so cloning the project
+ * never requires the key.
+ */
+val keystoreProperties = Properties().apply {
+    val file = rootProject.file("keystore.properties")
+    if (file.exists()) file.inputStream().use(::load)
 }
 
 android {
@@ -35,8 +50,24 @@ android {
         )
     }
 
+    signingConfigs {
+        if (keystoreProperties.containsKey("storeFile")) {
+            create("release") {
+                storeFile = rootProject.file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig = signingConfigs.findByName("release")
+            // R8 stays off: Retrofit's suspend interfaces and kotlinx.serialization
+            // both work off generic signatures, so shrinking without keep rules
+            // fails at runtime rather than at build time. A test track is not
+            // where to find that out.
             optimization {
                 enable = false
             }
